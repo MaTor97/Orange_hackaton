@@ -5,14 +5,14 @@
 
 ## 1. Recherche et préparation
 **Responsables** : Membres A & B  
-- [ ] **Comprendre l'API Geofencing d'Orange** :  
+- [x] **Comprendre l'API Geofencing d'Orange** :  
   - Lire la documentation officielle.  
   - Faire une liste des endpoints pertinents (délimitation de zones, notifications, localisation).  
   - Identifier les limitations techniques ou les quotas d'utilisation.  
-- [ ] **Benchmarking** :  
+- [x] **Benchmarking** :  
   - Analyser des applications similaires (ex. localisation en temps réel, notifications en groupe).  
   - Proposer des idées UX/UI adaptées à un festival.  
-- [ ] **Cartographie initiale** :  
+- [x] **Cartographie initiale** :  
   - Délimiter une zone fictive pour tester le geofencing.  
   - Collecter des ressources nécessaires (cartes, données GPS).  
 
@@ -20,8 +20,8 @@
 
 ## 2. Backend et intégration API
 **Responsables** : Membres C & D  
-- [ ] Configurer le serveur backend (Node.js, Django, etc.).  
-- [ ] Implémenter l'authentification avec l'API d'Orange.  
+- [x] Configurer le serveur backend (Node.js, Django, etc.).  
+- [x] Implémenter l'authentification avec l'API d'Orange.  
 - [ ] Créer une logique pour :  
   - Délimiter et enregistrer une zone géographique.  
   - Recevoir et stocker les données des appareils connectés.  
@@ -32,13 +32,13 @@
 
 ## 3. Frontend et interactions utilisateur
 **Responsables** : Membres B & E  
-- [ ] Prototyper l’interface utilisateur :  
+- [x] Prototyper l’interface utilisateur :  
   - Carte interactive pour voir les zones et localiser les amis.  
   - Formulaires simples pour envoyer des messages ou signaler une urgence.  
-- [ ] Développer les pages :  
+- [x] Développer les pages :  
   - Localisation en temps réel (avec WebSocket si nécessaire).  
   - Section d’alerte en cas d’urgence.  
-- [ ] Tester les fonctionnalités sur différents appareils (desktop et mobile).  
+- [x] Tester les fonctionnalités sur différents appareils (desktop et mobile).  
 
 ---
 
