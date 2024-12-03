@@ -9,8 +9,16 @@ app.use(bodyParser.json()); //analyse les requêtes au format json et les transf
 
 //démarrer le serveur
 
+app.use(session({
+    secret: 'your-secret-key', // Secret for signing the session ID cookie
+    resave: false,             // Don't resave session if it wasn't modified
+    saveUninitialized: true,   // Save a session that hasn't been modified
+    
+}));
+
 import userRouter from './controllers/user/user.js'
 app.use('/user', userRouter);
+
 
 
 app.listen(port, () => {

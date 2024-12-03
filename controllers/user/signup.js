@@ -6,7 +6,7 @@ const router = express.Router()
 
 // Route d'inscription
 router.post('/',async (req, res) => {
-    const { email, password} = req.body;
+    const { email, password, number} = req.body;
     console.log("body" + req.body)
     try {
         // Vérifier si l'utilisateur existe déjà
@@ -15,12 +15,17 @@ router.post('/',async (req, res) => {
         if (existingUser.length > 0) {
             return res.status(400).json({ message: 'Utilisateur déjà existant avec cet email' });
         }
+        const [existingnumber] = await connection.query('SELECT * FROM users WHERE number = ?', [number]);
+        console.log("existingnumber= "+ existingnumber);
+        if (existingnumber.length > 0) {
+            return res.status(400).json({ message: 'Utilisateur déjà existant avec ce numéro de téléphone' });
+        }
 
         // Hacher le mot de passe
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log("hashpw= "+hashedPassword)
         // Ajouter l'utilisateur à la base de données
-        await connection.query('INSERT INTO users (email, password) VALUES (?, ?)', [email, hashedPassword]);
+        await connection.query('INSERT INTO users (email, password, number) VALUES (?, ?, ?)', [email, hashedPassword, number]);
         res.json({ message: 'Inscription réussie' });
     } catch (error) {
         console.error(error);
