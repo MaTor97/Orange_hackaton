@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "dotenv": "^16.4.5",
+    "cookie-session": "^2.1.0",
+    "dotenv": "^16.4.6",
     "node-fetch": "^3.3.2"
   }
 }

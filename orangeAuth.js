@@ -1,35 +1,10 @@
 require('dotenv').config();
-/*
-async function fetchToken() {
-    const url = 'https://api.orange.com/oauth/v3/token';
 
-    const options = {
-        method: 'POST',
-        headers: {
-            'Authorization': process.env.ORANGE_KEY, // Replace with your variable name in .env
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json',
-        },
-        body: new URLSearchParams({
-            grant_type: 'client_credentials' // Form data
-        })
-    };
+let toRefresh = true;
+let timerID = false;
+let token;
 
-    try {
-        const response = await fetch(url, options);
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json(); // Parse JSON response
-        console.log('Token Response:', data);
-    } catch (error) {
-        console.error('Error fetching token:', error);
-    }
-}
-*/
-async function fetchToken() {
+async function fetchOrangeToken() {
     try {
         const response = await fetch('https://api.orange.com/oauth/v3/token', {
             method: 'POST',
@@ -51,10 +26,27 @@ async function fetchToken() {
     }
 }
 
-async function main(){
-    let test = await fetchToken();
+
     
-console.log(test)
+function refreshIn(){
+    if(!timerID)
+        clearTimeout(timerID)
+    timerID = setTimeout(() => {
+        toRefresh = true;
+      }, "3500 second");
+    return timerID;
 }
 
-main();
+async function getOrangeToken(){
+    if(toRefresh){
+        token = await fetchOrangeToken();
+        toRefresh = false;
+        timerID = refreshIn();
+    }
+console.log(token)
+console.log("timerID = " + timerID)
+console.log("refresh state = " + toRefresh)
+    return token
+}
+
+getOrangeToken();
