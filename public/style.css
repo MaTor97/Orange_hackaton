@@ -34,6 +34,9 @@ body{
         position: absolute;
         opacity: 0.5;
         transition: all 0.3s;
+        appearance: textfield;
+        -moz-appearance: textfield;
+
         &:focus{
             opacity: 1;
         }
