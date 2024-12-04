@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import jwt from 'jsonwebtoken'
 import express from 'express';
-import connection from "../../dbConnect.js"
+import connection from "../../db/db_config.js"
 const app = express.Router()
 dotenv.config()
 

@@ -1,7 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import cookieSession from 'cookie-session';
-import connection from "../../dbConnect.js"
+import connection from "../../db/db_config.js"
 const router = express.Router()
 
 // Route d'inscription

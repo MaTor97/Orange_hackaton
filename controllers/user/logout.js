@@ -1,5 +1,5 @@
 import express from 'express';
-import connection from "../../dbConnect.js"
+import connection from "../../db/db_config.js"
 const app = express.Router()
 import authenticateToken from '../../auth.js'
 
