@@ -2,6 +2,12 @@ import connection from './db/db_config.js';
 
 // Insert data into the database
 export const insertData = (data, callback) => {
+    data = parseInt(data);
+    
+    if (isNaN(data)) {
+        return callback(new Error('Data must be a number.'), null);
+    }
+
     const query = 'INSERT INTO numbers (number) VALUES (?)';
     connection.query(query, [data], (err, results) => {
         if (err) {
