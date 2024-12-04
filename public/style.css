@@ -1,0 +1,160 @@
+*,::after,::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Lato", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    background-color: #4b3838;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+.video-container {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* input {
+        z-index: 2;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        width: 80%;
+        height: 35px;
+        border: none;
+        border-radius: 25px;
+        margin: 20px auto;
+        padding: 0 20px;
+        font-size: 1.2rem;
+        outline: none;
+        position: absolute;
+        opacity: 0.5;
+        transition: all 0.3s;
+        &:focus{
+            opacity: 1;
+        }
+        &::placeholder{
+            color: #f28b05;
+        }
+        &:hover{
+            opacity: 1;
+        }
+    } */
+    h1{
+        font-weight: 300;
+        position: absolute;
+        top: 50%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        color: #fff;
+        font-size: 3rem;
+        /* text-align: center; */
+        .guardian{
+            font-weight: bolder;
+            color: #ff8c00;
+            &::after{
+                content: '🔥';
+            }
+        }
+        .safe{
+            color: #00ff00;
+            font-weight: 500;
+            font-size: 1.9rem;
+            &::after{
+                content: '👍';
+            }
+        }
+    }
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(5px);
+      outline: none;
+      z-index: 0;
+    }
+  
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(148, 82, 82, 0.5); /* Couleur semi-transparente */
+      z-index: 1; /* Place l'overlay au-dessus de la vidéo */
+      pointer-events: none; /* Permet de cliquer à travers l'overlay */
+    }
+}
+
+
+form{
+    margin-top: 50px;
+    z-index: 2;
+    position: absolute;
+    top:10%;
+    left:60%;
+    transform: translate(-50%, -50%)  ;
+    width: 90%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    label{
+        color:white;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    input {
+        position: absolute;
+        left: 40%;
+            z-index: 2;
+            
+            top:10%;
+            transform: translate(-50%, 50%);
+            width: 80%;
+            height: 51px;
+            border: none;
+            border-radius: 25px;
+            
+            padding: 0 20px;
+            font-size: 1.2rem;
+            outline: none;
+            
+            opacity: 0.5;
+            transition: all 0.3s;
+        
+        &:focus{
+            opacity: 1;
+        }
+        &::placeholder{
+            color: #f28b05;
+        }
+        &:hover{
+            opacity: 1;
+        }
+    }
+}
+button{
+    left:50%;
+    margin-top:20px;
+    height: 60px;
+    width: 200px;
+    color:black;
+    background-color:rgb(204, 94, 54);
+    opacity: 0.9;
+    margin-top: 50px;
+    border-radius:40%;
+    border:none;
+    font-size: 30px;
+    cursor: pointer;
+}
+  
