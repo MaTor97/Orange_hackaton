@@ -18,7 +18,7 @@ app.post('/submit', (req, res) => {
         if (err) {
             return res.status(500).send('Error inserting data into the database.');
         }
-        res.send('Data inserted successfully!');
+         res.status(200).redirect('/map/map.html');
     });
 });
 
