@@ -6,7 +6,7 @@ app.use(bodyParser.json());
 
 
 app.listen(3001, () => {
-    console.log(`serveur démarrer sur localhost:${3001}`);
+    console.log(`serveur démarré sur localhost:${3001}`);
 })
 
 const reponseGeofencingEnter = {
