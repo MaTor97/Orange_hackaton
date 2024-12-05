@@ -59,12 +59,18 @@ const reponseGeofencingEnter = {
 setInterval(() => {
     
     fetch('http://localhost:3000/sub',{
+      headers: {
+        'Content-Type': 'application/json',
+      },
         method: "post",
-        body: JSON.stringify(reponseGeofencingEnter)
+        body: JSON.stringify(reponseGeofencingEnter),
     }).catch((err) => console.error(err))
     console.log("sent enter")
     setTimeout(() => {
         fetch('http://localhost:3000/sub',{
+          headers: {
+            'Content-Type': 'application/json',
+          },
             method: "post",
             body: JSON.stringify(reponseGeofencingLeft)
         }).catch((err) => console.error(err))
@@ -73,3 +79,4 @@ setInterval(() => {
 
 
 }, 10000);
+
