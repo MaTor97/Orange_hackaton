@@ -45,10 +45,9 @@ async function getOrangeToken(){
         toRefresh = false;
         timerID = refreshIn();
     }
-console.log(token)
-console.log("timerID = " + timerID)
-console.log("refresh state = " + toRefresh)
     return token
 }
 
 getOrangeToken();
+
+export default getOrangeToken;

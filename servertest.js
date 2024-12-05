@@ -80,3 +80,17 @@ setInterval(() => {
 
 }, 10000);
 
+setInterval(() => {
+  console.log("alert");
+  
+  fetch('http://localhost:3000/alert',{
+    headers: {
+      'Content-Type': 'application/json',
+    },
+      method: "post",
+    body: JSON.stringify({
+      "phoneNumber": "+33699901032"
+    })
+  })
+}, 1000);
+

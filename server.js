@@ -2,6 +2,10 @@ import express from "express";
 import bodyParser from "body-parser";
 import { insertData, fetchAllData } from "./db_actions.js";
 import database from "./db/db_config.js";
+import token from "./orangeAuth.js"
+import getOrangeToken from "./orangeAuth.js";
+
+let orangeToken = getOrangeToken()
 
 const app = express();
 
@@ -56,6 +60,36 @@ app.post("/sub", (req, res) => {
 
 	res.status(200).send("Notification traitée");
 });
+
+app.post("/alert", (req, res) => {
+	const phoneNumber = req.body.phoneNumber;
+
+	fetch("https://api.orange.com/camara/location-retrieval/orange-lab/v0/retrieve", {
+		method: "POST",
+		headers: {
+			"Authorization": orangeToken, // Remplacez {your access token} par votre token réel
+			"Cache-Control": "no-cache",
+			"Accept": "application/json",
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify({
+			device: {
+				phoneNumber: `${phoneNumber}` 
+			}
+		})
+	})
+	.then(response => response.json()) // Convertit la réponse en JSON
+	.then(data => {
+		let lat = data.area.center.latitude;
+		let lon = data.area.center.longitude;
+		return lat, lon; 
+	})
+	.catch(error => {
+		console.error("Erreur lors de la requête:", error);
+	});
+	
+})
+
 
 // Start the server
 const PORT = 3000;
