@@ -40,7 +40,7 @@ app.get("/data", (req, res) => {
 });
 
 app.post("/sub", (req, res) => {
-	const event = req.body; // Notification reçue
+	const event = req.body;
 	const eventType = event.type;
 	const phoneNumber = event.data.device.phoneNumber;
 
@@ -67,7 +67,7 @@ app.post("/alert", (req, res) => {
 	fetch("https://api.orange.com/camara/location-retrieval/orange-lab/v0/retrieve", {
 		method: "POST",
 		headers: {
-			"Authorization": orangeToken, // Remplacez {your access token} par votre token réel
+			"Authorization": orangeToken,
 			"Cache-Control": "no-cache",
 			"Accept": "application/json",
 			"Content-Type": "application/json"
@@ -78,7 +78,7 @@ app.post("/alert", (req, res) => {
 			}
 		})
 	})
-	.then(response => response.json()) // Convertit la réponse en JSON
+	.then(response => response.json()) 
 	.then(data => {
 		let lat = data.area.center.latitude;
 		let lon = data.area.center.longitude;
