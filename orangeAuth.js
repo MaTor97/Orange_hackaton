@@ -1,5 +1,4 @@
 import dotenv from 'dotenv';
-
 dotenv.config();
 
 let toRefresh = true;
@@ -27,9 +26,7 @@ async function fetchOrangeToken() {
         console.error('Error fetching token:', error);
     }
 }
-
-
-    
+ 
 function refreshIn(){
     if(!timerID)
         clearTimeout(timerID)

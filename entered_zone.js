@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
-
 dotenv.config();
-// Fonction asynchrone pour envoyer une requête de souscription à l'API Orange
+
 async function fetchOrangeToken() {
   try {
       // Requête POST à l'API avec en-têtes et corps de requête
@@ -41,17 +40,17 @@ async function fetchOrangeToken() {
   }
 }
 
-// Fonction pour définir un délai avant le prochain rafraîchissement
+
 function refreshIn() {
-  if (timerID) clearTimeout(timerID); // Supprime le précédent timer
-  timerID = setTimeout(() => { toRefresh = true; }, 3500 * 1000); // Déclenche après 3500 secondes
+  if (timerID) clearTimeout(timerID); 
+  timerID = setTimeout(() => { toRefresh = true; }, 3500 * 1000);
   return timerID;
 }
 
 // Fonction principale pour récupérer et afficher le token
 async function getOrangeToken() {
-  const data = await fetchOrangeToken(); // Récupère les données via fetchOrangeToken
-  console.log(JSON.stringify(data, null, 2)); // Affiche les données dans la console
+  const data = await fetchOrangeToken();
+  console.log(JSON.stringify(data, null, 2));
   return data;
 }
 

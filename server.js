@@ -44,11 +44,9 @@ app.post("/sub", (req, res) => {
 	const eventType = event.type;
 	const phoneNumber = event.data.device.phoneNumber;
 
-	// Définir la valeur de isInZone selon l'événement
 	const isInZone = eventType === "org.camaraproject.geofencing-subscriptions.v0.area-entered" ? 1 : 0;
 	console.log(isInZone);
 
-	// Mettre à jour la colonne isInZone dans la base de données
 	database.query(`UPDATE numbers SET isInZone = ${isInZone} WHERE number = ${phoneNumber}`, (err, results) => {
 		if (err) {
 			console.error("Erreur lors de la mise à jour de isInZone:", err);

@@ -1,6 +1,5 @@
 import connection from './db/db_config.js';
 
-// Insert data into the database
 export const insertData = (data, callback) => {
     const query = 'INSERT INTO numbers (number) VALUES (?)';
     connection.query(query, [data], (err, results) => {
@@ -12,7 +11,6 @@ export const insertData = (data, callback) => {
     });
 };
 
-// Fetch all numbers
 export const fetchAllData = (callback) => {
     const query = 'SELECT * FROM numbers';
     connection.query(query, (err, results) => {
