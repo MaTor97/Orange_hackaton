@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
 // Fonction asynchrone pour envoyer une requête de souscription à l'API Orange
 async function fetchOrangeToken() {
   try {
@@ -5,7 +8,7 @@ async function fetchOrangeToken() {
       const response = await fetch("https://api.orange.com/camara/geofencing/orange-lab/v0/subscriptions/simulated", {
           method: 'POST',
           headers: {
-              "Authorization": 'Bearer eyJ0eXAiOiJKV1QiLCJ2ZXIiOiIxLjAiLCJhbGciOiJFUzM4NCIsImtpZCI6Ikg1RkdUNXhDUlJWU0NseG5vTXZCWEtUM1AyckhTRVZUNV9VdE16UFdCYTQifQ.eyJpc3MiOiJodHRwczovL2FwaS5vcmFuZ2UuY29tL29hdXRoL3YzIiwiYXVkIjpbIm9wZSJdLCJleHAiOjE3MzMzMjIzMzEsImlhdCI6MTczMzMxODczMSwianRpIjoiRmxJN3o5RTVMQ0Y1SEFkOU9TMlMzRlJRbUxjQ09zUDhQc0d2WG11UzBJNDRqZVFNVVZ1bXBVbFE0WVEyWVZ6UUk0M3ZENEE3QklNb2pZbTFYQXFOMjVJcVpIdlFLREJSVVdiOSIsImNsaWVudF9pZCI6IlM0Rkk4N3o3Tk5uczZBZXVObXZ4Q0dIcWY4RHRlZTNDIiwic3ViIjoiUzRGSTg3ejdOTm5zNkFldU5tdnhDR0hxZjhEdGVlM0MiLCJjbGllbnRfbmFtZSI6eyJkZWZhdWx0IjoiSGFja2F0b24gQmVjb2RlIn0sImNsaWVudF90YWciOiJaYzRQQUpEUVhhNWhkMzVMIiwic2NvcGUiOlsib3BlOmNhbWFyYV9nZW9mZW5jaW5nX29yYW5nZS1sYWI6djA6YWNjZXNzIl0sIm1jbyI6IlNFS0FQSSJ9.F-_nrH6lurBJpf124qZN_5j8ajfZUwW19cJxOiatsL3bM6Obxr3wA9M1DwAE4Kg3mTIRZI9woRDhFHLPZlOHk_GSD4HgtXrahrAM5TlVnQl474c4dfkzS1M7JNHULpan', // Token d'accès
+              "Authorization": process.env.TOKEN,              
               'accept': 'application/json',
               'Content-Type': 'application/json'
           },
