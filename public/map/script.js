@@ -1,4 +1,3 @@
-// Initialisation de la carte
 const map = L.map('map').setView([48.80, 2.29], 12);
 
 // Chargement des tuiles OpenStreetMap
