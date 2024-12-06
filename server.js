@@ -2,10 +2,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import { insertData, fetchAllData } from "./db_actions.js";
 import database from "./db/db_config.js";
-import token from "./orangeAuth.js"
 import getOrangeToken from "./orangeAuth.js";
 
-let orangeToken = getOrangeToken()
+let orangeToken = await getOrangeToken()
+console.log(orangeToken);
+
 
 const app = express();
 
@@ -45,8 +46,6 @@ app.post("/sub", (req, res) => {
 	const phoneNumber = event.data.device.phoneNumber;
 
 	const isInZone = eventType === "org.camaraproject.geofencing-subscriptions.v0.area-entered" ? 1 : 0;
-	console.log(isInZone);
-
 	database.query(`UPDATE numbers SET isInZone = ${isInZone} WHERE number = ${phoneNumber}`, (err, results) => {
 		if (err) {
 			console.error("Erreur lors de la mise à jour de isInZone:", err);
@@ -61,11 +60,10 @@ app.post("/sub", (req, res) => {
 
 app.post("/alert", (req, res) => {
 	const phoneNumber = req.body.phoneNumber;
-
 	fetch("https://api.orange.com/camara/location-retrieval/orange-lab/v0/retrieve", {
 		method: "POST",
 		headers: {
-			"Authorization": orangeToken,
+			"Authorization": `Bearer ${orangeToken.access_token}`,
 			"Cache-Control": "no-cache",
 			"Accept": "application/json",
 			"Content-Type": "application/json"
@@ -78,9 +76,10 @@ app.post("/alert", (req, res) => {
 	})
 	.then(response => response.json()) 
 	.then(data => {
-		let lat = data.area.center.latitude;
-		let lon = data.area.center.longitude;
-		return lat, lon; 
+		console.log(data);
+		// let lat = data.area.center.latitude;
+		// let lon = data.area.center.longitude;
+		// return lat, lon; 
 	})
 	.catch(error => {
 		console.error("Erreur lors de la requête:", error);
