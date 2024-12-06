@@ -85,7 +85,6 @@ app.post("/alert", (req, res) => {
 	
 })
 
-
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {
