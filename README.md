@@ -1,5 +1,5 @@
 # Orange_hackaton
-# To-Do List Collaborative pour 5 personnes (sans chef de projet)
+# To-Do List Collaborative pour 5 personnes
 
 ---
 
