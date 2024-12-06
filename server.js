@@ -5,8 +5,6 @@ import database from "./db/db_config.js";
 import getOrangeToken from "./orangeAuth.js";
 
 let orangeToken = await getOrangeToken()
-console.log(orangeToken);
-
 
 const app = express();
 
@@ -76,10 +74,10 @@ app.post("/alert", (req, res) => {
 	})
 	.then(response => response.json()) 
 	.then(data => {
-		console.log(data);
-		// let lat = data.area.center.latitude;
-		// let lon = data.area.center.longitude;
-		// return lat, lon; 
+		let lat = data.area.center.latitude;
+		let lon = data.area.center.longitude;
+		console.log(lat, lon);
+		return lat, lon; 
 	})
 	.catch(error => {
 		console.error("Erreur lors de la requête:", error);
